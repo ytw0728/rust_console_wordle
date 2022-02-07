@@ -48,8 +48,10 @@ impl ValidateAnswer for answers::AnswersType {
             .for_each(|(_, letter)| {
                 match cloned_map.get_mut(&letter.get_value()) {
                     Some(positions) => {
+                        if positions.len() > 0 {
+                            *letter = answer_item::AnswerItem::Ball(letter.get_value());
+                        }
                         positions.pop();
-                        *letter = answer_item::AnswerItem::Ball(letter.get_value());
                     },
                     None => {},
                 }
