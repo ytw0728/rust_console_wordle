@@ -1,7 +1,8 @@
 [package]
-name = "rust-word-baseball"
+name = "tae-wondle"
 version = "0.1.0"
 edition = "2021"
+include = ["src/*.rs", "tests/*.rs", "Cargo.toml"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
