@@ -22,8 +22,8 @@ impl ValidateAnswer for answers::AnswersType {
         });
 
         // 초기화
-        self.iter_mut().enumerate().for_each(|(_, word)| {
-            word.iter_mut().enumerate().for_each(|(_, v)| *v = answer_item::AnswerItem::Default(v.get_value()));
+        self.iter_mut().for_each(|word| {
+            word.iter_mut().for_each(|v| *v = answer_item::AnswerItem::Default(v.get_value()));
         });
 
         // 체크
@@ -41,11 +41,11 @@ impl ValidateAnswer for answers::AnswersType {
                         word[i] = answer_item::AnswerItem::Strike(c);
                     }
                 });
-            
+
             // 2) word 기준 체크
-            word.iter_mut().enumerate()
-            .filter(|(_, v)| if let answer_item::AnswerItem::Strike(_) = v { false } else { true })
-            .for_each(|(_, letter)| {
+            word.iter_mut()
+            .filter(|v| if let answer_item::AnswerItem::Strike(_) = v { false } else { true })
+            .for_each(|letter| {
                 match cloned_map.get_mut(&letter.get_value()) {
                     Some(positions) => {
                         if positions.len() > 0 {
