@@ -11,7 +11,6 @@ pub enum ConsoleCursor {
 }
 
 impl std::fmt::Display for ConsoleCursor {
-    /** [todo] 수명까지 했으면 &str에 static 수명 지정해두면 좋겠다. */
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str(match self {
             ConsoleCursor::Base =>  "\x1B[0G\x1B[8A",
@@ -28,7 +27,6 @@ pub enum ConsoleColor {
 }
 
 impl std::fmt::Display for ConsoleColor {
-    /** [todo] 수명까지 했으면 &str에 static 수명 지정해두면 좋겠다. */
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str(match self {
             ConsoleColor::Green => "\x1B[32m",
